@@ -1,14 +1,34 @@
-import './Menu.less'
+import "./Menu.less";
 
 // Kullanacağımız veri bu, üzerinde çalışın ama henüz hiçbir şeyi değiştirmeyin.
 let menuElemanlari = [
-  'Gündem',
-  'Dünya',
+  "Gündem",
+  "Dünya",
   "Ekonomi",
-  'Yazarlar',
-  'Burç Yorumları',
-  'Diğer'
+  "Yazarlar",
+  "Burç Yorumları",
+  "Diğer",
 ];
+
+const menuYapici = (menuElemanlari) => {
+  const menuDiv = document.createElement("div");
+  menuDiv.classList.add("menu");
+
+  const ulElement = document.createElement("ul");
+  menuElemanlari.forEach((eleman) => {
+    const liElement = document.createElement("li");
+    liElement.textContent = eleman;
+    ulElement.append(liElement);
+  });
+  console.log(document.querySelector(".menu-button"));
+  document.querySelector(".menu-button").addEventListener("click", () => {
+    document.querySelector("div.menu").classList.toggle("menu--open");
+  });
+
+  menuDiv.append(ulElement);
+  return menuDiv;
+};
+document.querySelector(".header").append(menuYapici(menuElemanlari));
 
 /*
   Adım 1: Aşağıdaki etiketlee gibi bir menü oluşturmak için 'menuYapici' adlı bir bileşen yazın:
